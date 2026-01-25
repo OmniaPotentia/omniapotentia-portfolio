@@ -1,7 +1,14 @@
 services:
+  portfolio-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-frontend
+    networks:
+      - web
+    expose:
+      - "80"
+
+networks:
   web:
-    build: .
-    ports:
-      - "3000:3000"
-    environment:
-      NODE_ENV: production
+    external: true
