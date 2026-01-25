@@ -1,9 +1,9 @@
 services:
-  portfolio-frontend:
+  omniapotentia-portfolio-frontend:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: portfolio-frontend
+    container_name: omniapotentia-portfolio-frontend
     networks:
       - web
     expose:
