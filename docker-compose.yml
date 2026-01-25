@@ -4,6 +4,10 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: omniapotentia-portfolio-frontend
+    environment:
+      - VIRTUAL_HOST=omniapotentia.com
+      - LETSENCRYPT_HOST=omniapotentia.com
+      - LETSENCRYPT_EMAIL=kutay@kutaykaracair.com
     networks:
       - web
     expose:
