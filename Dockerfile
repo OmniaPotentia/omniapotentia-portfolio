@@ -7,10 +7,14 @@ RUN npm ci
 
 COPY . .
 RUN npm run build
-# output: 'export' varsa Next build sonunda /app/out oluşur
 
-# 2) Serve (static)
-FROM nginx:stable-alpine
-COPY --from=builder /app/out /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# 2) Run Next.js server
+FROM node:20-alpine
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+COPY --from=builder /app ./
+
+EXPOSE 3000
+CMD ["npm", "run", "start"]
